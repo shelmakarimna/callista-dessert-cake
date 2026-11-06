@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Callista Dessert & Cake — Admin</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-label" id="pageLabel">Admin - Menu</div>
+
+  <div class="dashboard">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-script">Callista</span>
+        <span class="brand-sub">DESSERT &amp; CAKE</span>
+      </div>
+      <button class="logout" id="logoutBtn">Logout <span>⇥</span></button>
+    </header>
+
+    <aside class="sidebar">
+      <div class="profile">
+        <div class="avatar"><span>●</span></div>
+        <div>
+          <strong>Admin</strong>
+          <small>Callista Dessert &amp; Cake</small>
+        </div>
+      </div>
+
+      <nav>
+        <button class="nav-item" data-page="contact">
+          <span class="nav-icon">☏</span> Kontak &amp; Media Sosial
+        </button>
+        <button class="nav-item active" data-page="menu">
+          <span class="nav-icon">▤</span> Kelola Katalog Produk
+        </button>
+        <button class="nav-item" data-page="stock">
+          <span class="nav-icon">⇧</span> Pemantauan Stok Mitra
+        </button>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <!-- HALAMAN KATALOG PRODUK -->
+      <section class="view" id="view-menu">
+        <div class="section-heading">
+          <h1>Kelola Katalog Produk</h1>
+          <button class="primary" id="addProductTop">⊕ &nbsp;Tambah Produk</button>
+        </div>
+
+        <div class="menu-layout">
+          <div class="panel product-panel">
+            <div class="toolbar">
+              <label class="search">
+                <span>⌕</span>
+                <input id="productSearch" placeholder="Cari Produk...">
+              </label>
+              <div class="toolbar-actions">
+                <button class="primary small" id="addProduct">Tambah Produk</button>
+                <button class="danger small" id="deleteProducts">Hapus</button>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="check-col"><input type="checkbox" id="selectAllProducts"></th>
+                    <th></th>
+                    <th>Nama</th>
+                    <th>Kategori</th>
+                    <th>Harga</th>
+                  </tr>
+                </thead>
+                <tbody id="productRows"></tbody>
+              </table>
+            </div>
+
+            <div class="pagination">
+              <button disabled>‹</button>
+              <span id="productPage">1 2 3 ... 10</span>
+              <button>›</button>
+            </div>
+          </div>
+
+          <div class="right-column">
+            <div class="panel total-card">
+              <div class="scallop-strip"></div>
+              <p>Total Produk di Katalog:</p>
+              <strong id="totalProducts">24</strong>
+            </div>
+
+            <div class="panel category-card">
+              <div class="scallop-strip"></div>
+              <h3>Kategori:</h3>
+              <div class="chips">
+                <span class="chip pink">Mochi</span>
+                <span class="chip rose">Crepe Cake</span>
+                <span class="chip pink">Mochi Cake</span>
+                <span class="chip pink">Dubai Chewy</span>
+              </div>
+            </div>
+
+            <div class="panel history-card">
+              <div class="history-title">◷ &nbsp;Riwayat Katalog:</div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Nama</th>
+                    <th>Kategori</th>
+                    <th>Harga</th>
+                    <th>Keterangan</th>
+                  </tr>
+                </thead>
+                <tbody id="historyRows"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HALAMAN PEMANTAUAN STOK -->
+      <section class="view hidden" id="view-stock">
+        <div class="section-heading stock-heading">
+          <h1>Pemantauan Stok Mitra</h1>
+        </div>
+
+        <div class="stock-stats">
+          <div class="stat">
+            <span class="stat-icon">▣</span>
+            <div>
+              <small>Total Mitra</small>
+              <strong>16</strong>
+            </div>
+          </div>
+          <div class="stat">
+            <span class="stat-icon basket">▤</span>
+            <div>
+              <small>Total Produk</small>
+              <strong id="stockProductCount">38</strong>
+            </div>
+          </div>
+        </div>
+
+        <p class="muted intro">Unduh data untuk memudahkan pengelolaan persediaan.</p>
+
+        <div class="panel stock-panel">
+          <div class="stock-toolbar">
+            <label class="search">
+              <span>⌕</span>
+              <input id="stockSearch" placeholder="Cari Produk atau Mitra...">
+            </label>
+
+            <select id="categoryFilter">
+              <option value="">Semua Kategori</option>
+              <option>Mochi</option>
+              <option>Chowy Cookie</option>
+              <option>Crepe Cake</option>
+              <option>Mochi Cake</option>
+            </select>
+
+            <select id="partnerFilter">
+              <option value="">Semua Mitra</option>
+              <option>Rita Supermall Purwokerto</option>
+              <option>Rita Isola Purwokerto</option>
+              <option>Rita Kebondalem</option>
+              <option>Indogrosir Purwokerto</option>
+              <option>Hanna Dukuhwaluh</option>
+              <option>Hanna Karangkobar</option>
+              <option>Marta Frozen Purwokerto</option>
+              <option>Buntos Chicken</option>
+              <option>Rita Cilacap</option>
+              <option>Kato Kroya</option>
+              <option>Jadi Baru Kroya</option>
+              <option>Rita Kebumen</option>
+              <option>Jadi Baru Bumiayu</option>
+              <option>Rita Supermall Tegal</option>
+            </select>
+
+            <button class="primary export" id="exportStock">⇩ &nbsp;Export Data</button>
+          </div>
+
+          <div class="table-wrap">
+            <table class="stock-table">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" id="selectAllStock"></th>
+                  <th>Produk</th>
+                  <th>Kategori</th>
+                  <th>Mitra</th>
+                  <th>Stok<br>Awal</th>
+                  <th>Stok<br>Terjual</th>
+                  <th>Sisa<br>Stok</th>
+                  <th>Status</th>
+                  <th>Terakhir<br>Update</th>
+                </tr>
+              </thead>
+              <tbody id="stockRows"></tbody>
+            </table>
+          </div>
+
+          <div class="pagination">
+            <button disabled>‹</button>
+            <span>1 2 3 ... 10</span>
+            <button>›</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- HALAMAN KONTAK DAN MEDIA SOSIAL -->
+      <section class="view hidden" id="view-contact">
+        <div class="section-heading">
+          <h1>Kontak &amp; Media Sosial</h1>
+          <button class="primary" id="addInfo">⊕ &nbsp;Tambah Informasi</button>
+        </div>
+
+        <div class="panel contact-panel">
+          <div class="pink-panel-title">
+            <div class="round-icon">☎</div>
+            <div>
+              <strong>Informasi Kontak</strong>
+              <small>Atur informasi kontak utama yang akan ditampilkan di website</small>
+            </div>
+            <button class="light-button" id="editContact">✎ &nbsp;Edit Kontak</button>
+          </div>
+
+          <div class="contact-cards" id="contactCards">
+            <div class="contact-card">
+              <span class="contact-icon">☏</span>
+              <strong>WhatsApp</strong>
+              <p>+62 123 456 7890</p>
+            </div>
+            <div class="contact-card">
+              <span class="contact-icon">✉</span>
+              <strong>Email</strong>
+              <p>email@gmail.com</p>
+            </div>
+            <div class="contact-card">
+              <span class="contact-icon">♧</span>
+              <strong>Alamat</strong>
+              <p>Jl. Cabang, Banyumas</p>
+            </div>
+            <div class="contact-card">
+              <span class="contact-icon">◷</span>
+              <strong>Jam Operasional</strong>
+              <p>08.00–21.00</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel social-panel">
+          <div class="pink-panel-title">
+            <div class="round-icon">●</div>
+            <div>
+              <strong>Media Sosial</strong>
+              <small>Kelola akun media sosial Callista Dessert &amp; Cake</small>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table class="social-table">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" id="selectAllSocial"></th>
+                  <th>Platform</th>
+                  <th>Username/Link</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="socialRows"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <p class="footer-note">Informasi Kontak akan muncul di bagian footer website</p>
+      </section>
+    </main>
+  </div>
+
+  <!-- FORM TAMBAH / EDIT PRODUK -->
+  <dialog id="productDialog" class="modal">
+    <form id="productForm" method="dialog">
+      <div class="modal-head">
+        <h2 id="productModalTitle">Tambah Produk</h2>
+        <button type="button" class="close-modal" data-close="productDialog">×</button>
+      </div>
+
+      <label>Nama Produk
+        <input name="name" required placeholder="Contoh: Mochi Anggur">
+      </label>
+
+      <label>Kategori
+        <select name="category">
+          <option>Mochi</option>
+          <option>Crepe Cake</option>
+          <option>Mochi Cake</option>
+          <option>Chewy Cookie</option>
+        </select>
+      </label>
+
+      <label>Harga (Rp)
+        <input name="price" type="number" min="0" required placeholder="5500">
+      </label>
+
+      <div class="modal-actions">
+        <button type="button" class="secondary" data-close="productDialog">Batal</button>
+        <button class="primary" type="submit">Simpan Produk</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- FORM EDIT KONTAK -->
+  <dialog id="contactDialog" class="modal">
+    <form id="contactForm" method="dialog">
+      <div class="modal-head">
+        <h2>Edit Informasi Kontak</h2>
+        <button type="button" class="close-modal" data-close="contactDialog">×</button>
+      </div>
+
+      <label>WhatsApp
+        <input name="whatsapp" value="+62 123 456 7890" required>
+      </label>
+      <label>Email
+        <input name="email" value="email@gmail.com" required>
+      </label>
+      <label>Alamat
+        <input name="address" value="Jl. Cabang, Banyumas" required>
+      </label>
+      <label>Jam Operasional
+        <input name="hours" value="08.00–21.00" required>
+      </label>
+
+      <div class="modal-actions">
+        <button type="button" class="secondary" data-close="contactDialog">Batal</button>
+        <button class="primary" type="submit">Simpan Perubahan</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- FORM TAMBAH / EDIT MEDIA SOSIAL -->
+  <dialog id="socialDialog" class="modal">
+    <form id="socialForm" method="dialog">
+      <div class="modal-head">
+        <h2 id="socialModalTitle">Tambah Media Sosial</h2>
+        <button type="button" class="close-modal" data-close="socialDialog">×</button>
+      </div>
+
+      <label>Platform
+        <input name="platform" required placeholder="Instagram">
+      </label>
+      <label>Username/Link
+        <input name="handle" required placeholder="@callista.dessertcake">
+      </label>
+
+      <div class="modal-actions">
+        <button type="button" class="secondary" data-close="socialDialog">Batal</button>
+        <button class="primary" type="submit">Simpan</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>

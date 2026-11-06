@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /upload_web/
+Disallow: /cgi-bin/
+
+Sitemap: https://callistadessert.id/sitemap.xml

@@ -1,0 +1,91 @@
+@keyframes aFadeUp  { from { opacity: 0; transform: translateY(26px); } to { opacity: var(--o, 1); transform: none; } }
+@keyframes aFadeIn  { from { opacity: 0; } to { opacity: var(--o, 1); } }
+@keyframes aPop     { from { opacity: 0; transform: scale(.6) rotate(-8deg); } to { opacity: var(--o, 1); transform: none; } }
+@keyframes aNavIn   { from { opacity: 0; transform: translate(-50%, -28px); } to { opacity: var(--o, 1); transform: translate(-50%, 0); } }
+@keyframes aBlobIn  { from { opacity: 0; transform: translate(-50%, -50%) scale(.85); } to { opacity: var(--o, 1); transform: translate(-50%, -50%) scale(1); } }
+@keyframes aBlobFloat {
+  0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+  50%      { transform: translate(-50%, -52%) scale(1.03) rotate(1.5deg); }
+}
+@keyframes aDrift   { from { transform: translateY(0) rotate(-5deg); } to { transform: translateY(-16px) rotate(-3deg); } }
+@keyframes aBob     { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes aTitlePop { 0% { transform: scale(.85); opacity: .3; } 60% { transform: scale(1.05); } 100% { transform: scale(1); opacity: 1; } }
+@keyframes aFromLeft  { from { opacity: 0; transform: translateX(-46px); } to { opacity: var(--o, 1); transform: none; } }
+@keyframes aFromRight { from { opacity: 0; transform: translateX(46px); } to { opacity: var(--o, 1); transform: none; } }
+@keyframes aWiggle  { 0%, 100% { transform: translateY(2px) rotate(0deg); } 50% { transform: translateY(2px) rotate(8deg); } }
+@keyframes aWiggle2 { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+@keyframes aPulse {
+  0%   { box-shadow: 0 10px 22px rgba(234, 109, 149, .35), 0 0 0 0 rgba(234, 109, 149, .45); }
+  70%  { box-shadow: 0 10px 22px rgba(234, 109, 149, .35), 0 0 0 14px rgba(234, 109, 149, 0); }
+  100% { box-shadow: 0 10px 22px rgba(234, 109, 149, .35), 0 0 0 0 rgba(234, 109, 149, 0); }
+}
+
+.navbar { animation: aNavIn .7s ease backwards; }
+.hero__blob-shape { animation: aBlobIn .9s ease backwards, aBlobFloat 7s ease-in-out .9s infinite; }
+.hero__sweet--1   { animation: aDrift 9s ease-in-out infinite alternate; }
+.hero__sweet--2   { animation: aDrift 9s ease-in-out -4s infinite alternate-reverse; }
+
+.hero__sweetness  { animation: aFadeUp .7s ease .15s backwards; }
+.hero__made-with  { animation: aPop .6s ease .35s backwards, aBob 3.6s ease-in-out 1.1s infinite; }
+.hero__love       { animation: aFadeUp .7s ease .5s backwards; }
+.hero__tagline    { animation: aFadeUp .7s ease .65s backwards; }
+.hero__actions    { animation: aFadeUp .7s ease .8s backwards; }
+
+/* ---------- MENU (menu.html) ---------- */
+h1.script-title { animation: aFadeUp .7s ease .1s backwards; }
+.banner-images > div { animation: aFadeIn .5s ease backwards; }
+.banner-title.is-pop { animation: aTitlePop .5s ease; }
+
+/* ---------- Muncul pelan saat di-scroll (class ditambah oleh animasi.js) ---------- */
+.reveal:not(.is-visible) { opacity: 0; }
+.reveal.is-visible { animation: aFadeUp .65s cubic-bezier(.2, .7, .2, 1) var(--d, 0s) backwards; }
+.reveal.left.is-visible  { animation-name: aFromLeft; }
+.reveal.right.is-visible { animation-name: aFromRight; }
+.reveal.pop.is-visible   { animation-name: aPop; }
+.reveal.fade.is-visible  { animation-name: aFadeIn; }
+/* teks yang memang agak transparan di style.css: animasi berhenti di opacity aslinya */
+.collage__desc  { --o: .85; }
+.location__desc { --o: .8; }
+
+/* ---------- Efek hover foto ---------- */
+.menu__card-img { transition: transform .35s ease; }
+.menu__card:hover .menu__card-img { transform: scale(1.07) rotate(-2deg); }
+.product-img img { transition: transform .45s ease; }
+.product:hover .product-img img { transform: scale(1.07); }
+
+/* ---------- BERANDA: seluruh bagian ---------- */
+/* tombol utama hero berdenyut halus */
+.hero__actions .btn--primary { animation: aPulse 2.6s ease-out 1.6s infinite; }
+.hero__actions .btn--primary:hover { animation: none; }
+
+/* Tentang Kami */
+.collage__emoji { animation: aWiggle 4s ease-in-out infinite; }
+.collage__item img { animation: aBob 6s ease-in-out infinite; }
+.collage__item--photo4 img { animation-delay: -2s; }
+.collage__item--photo3 img { animation-delay: -4s; }
+
+/* Pilih Dessertmu: hiasan di samping bergoyang pelan */
+.menu__ornament--left  { animation: aBob 7s ease-in-out infinite; }
+.menu__ornament--right { animation: aBob 7s ease-in-out -3.5s infinite; }
+
+/* Kami Menjamin Kualitas */
+.quality__card { transition: transform .3s ease, box-shadow .3s ease; }
+.quality__card:hover { transform: translateY(-6px); box-shadow: 0 14px 28px rgba(201, 79, 124, .18); }
+.quality__icon { transition: transform .35s ease; }
+.quality__card:hover .quality__icon { transform: scale(1.08) rotate(-4deg); }
+.quality__cta-emoji { animation: aWiggle2 3.5s ease-in-out infinite; }
+
+/* Promo: foto mengambang */
+.promo__float--coklat { animation: aBob 5.5s ease-in-out infinite; }
+.promo__float--stw    { animation: aBob 6.5s ease-in-out -2s infinite; }
+.promo__float--matcha { animation: aBob 6s ease-in-out -4s infinite; }
+
+/* Footer */
+.footer__social a { transition: transform .25s ease; }
+.footer__social a:hover { transform: translateY(-3px) scale(1.15); }
+
+/* Hormati pengguna yang mematikan animasi di perangkatnya */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; }
+  .reveal:not(.is-visible) { opacity: 1; }
+}

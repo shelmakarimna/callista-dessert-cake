@@ -1,0 +1,426 @@
+/* ===== FOOTER CALLISTA =====
+   --u = 1px di layar >= 1366px (ukuran tetap),
+   mengecil proporsional di layar yang lebih kecil. */
+.site-footer {
+  --u: min(1px, calc(100vw / 1366));
+  position: relative;
+  width: 100%;
+  background: #FFF6F9;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+/* pita pink + 14 lengkungan di bawahnya */
+.site-footer__band {
+  height: calc(84 * var(--u));
+  background:
+    radial-gradient(ellipse 50% 100% at 50% 0, #FFD9E5 98%, transparent 100%)
+      0 100% / calc(100% / 14) calc(31 * var(--u)) repeat-x,
+    linear-gradient(#FFD9E5, #FFD9E5)
+      0 0 / 100% calc(54 * var(--u)) no-repeat;
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: calc(1300 * var(--u));
+  margin: 0 auto;
+  padding: calc(34 * var(--u)) 0 calc(60 * var(--u));
+  box-sizing: border-box;
+}
+
+/* logo (diperkecil) + Login Admin kecil di bawahnya */
+.site-footer__brand {
+  position: relative;
+  flex: 0 0 calc(185 * var(--u));
+}
+.site-footer__brand img {
+  display: block;
+  width: calc(185 * var(--u));
+  max-width: none;
+  height: auto;
+}
+.site-footer__admin {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: calc(2 * var(--u));
+  font-size: calc(12 * var(--u));
+  font-weight: 500;
+  color: #EA6D95;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-footer__admin:hover { text-decoration: underline; }
+
+.site-footer__col {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: calc(20 * var(--u));
+  margin-left: calc(90 * var(--u));
+}
+
+.site-footer__col--line {
+  margin-left: calc(50 * var(--u));
+  margin-right: calc(70 * var(--u));
+  padding: calc(6 * var(--u)) 0 calc(6 * var(--u)) calc(44 * var(--u));
+  border-left: calc(1.5 * var(--u)) solid #F8CBD9;
+  width: calc(410 * var(--u));
+  justify-content: center;
+}
+
+.site-footer__item {
+  display: flex;
+  align-items: center;
+  gap: calc(12 * var(--u));
+  font-size: calc(15 * var(--u));
+  line-height: 1.5;
+  color: #B5A8AD;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-footer__col--line .site-footer__item {
+  white-space: normal;
+  align-items: flex-start;
+}
+.site-footer__item svg {
+  flex: none;
+  width: calc(24 * var(--u));
+  height: calc(24 * var(--u));
+  color: #EA6D95;
+}
+a.site-footer__item:hover { color: #EA6D95; }
+
+.site-footer__right {
+  margin-left: auto;
+  flex: 0 0 calc(160 * var(--u));
+  width: calc(160 * var(--u));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(18 * var(--u));
+}
+
+.site-footer__social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: calc(23 * var(--u));
+}
+.site-footer__social a {
+  display: block;
+  width: calc(29 * var(--u));
+  height: calc(29 * var(--u));
+}
+.site-footer__social svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.site-footer__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(40 * var(--u));
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: calc(1.5 * var(--u)) solid #EA6D95;
+  border-radius: calc(8 * var(--u));
+  background: #FFF8FA;
+  color: #EA6D95;
+  font-size: calc(16 * var(--u));
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-footer__btn:hover {
+  background: #EA6D95;
+  color: #fff;
+}
+
+
+/* =========================================
+   RESPONSIVE FOOTER CALLISTA
+   Beranda dan Menu Dessert
+========================================= */
+
+/* ===== TABLET ===== */
+@media (max-width: 1100px) {
+
+  .site-footer {
+    --u: 1px;
+  }
+
+  .site-footer__inner {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 40px 35px;
+    width: 90%;
+    max-width: 850px;
+    padding: 40px 0 55px;
+  }
+
+  .site-footer__brand {
+    flex: initial;
+    width: 100%;
+  }
+
+  .site-footer__brand img {
+    width: 160px;
+    max-width: 100%;
+  }
+
+  .site-footer__admin {
+    font-size: 12px;
+  }
+
+  .site-footer__col {
+    flex: initial;
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+    gap: 18px;
+  }
+
+  .site-footer__col--line {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 5px 0 5px 25px;
+  }
+
+  .site-footer__item {
+    font-size: 13px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .site-footer__item svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .site-footer__right {
+    flex: initial;
+    width: 100%;
+    margin: 0;
+    gap: 18px;
+  }
+
+  .site-footer__social {
+    gap: 18px;
+  }
+
+  .site-footer__social a {
+    width: 27px;
+    height: 27px;
+  }
+
+  .site-footer__btn {
+    width: 160px;
+    height: 40px;
+    font-size: 13px;
+  }
+}
+
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+
+  .site-footer__band {
+    height: 55px;
+    background:
+      radial-gradient(
+        ellipse 50% 100% at 50% 0,
+        #FFD9E5 98%,
+        transparent 100%
+      ) 0 100% / calc(100% / 10) 22px repeat-x,
+      linear-gradient(#FFD9E5, #FFD9E5)
+      0 0 / 100% 35px no-repeat;
+  }
+
+  .site-footer__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 27px;
+    width: 88%;
+    max-width: 400px;
+    padding: 30px 0 35px;
+  }
+
+  /* LOGO DAN LOGIN ADMIN */
+  .site-footer__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: initial;
+    width: 100%;
+  }
+
+  .site-footer__brand img {
+    width: 140px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .site-footer__admin {
+    position: static;
+    transform: none;
+    margin-top: 8px;
+    font-size: 12px;
+  }
+
+  /* KONTAK */
+  .site-footer__col {
+    display: flex;
+    align-items: flex-start;
+    flex: initial;
+    width: 100%;
+    max-width: 310px;
+    gap: 15px;
+    margin: 0;
+  }
+
+  .site-footer__item {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    gap: 11px;
+    font-size: 12px;
+    line-height: 1.7;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .site-footer__item svg {
+    flex: 0 0 19px;
+    width: 19px;
+    height: 19px;
+    margin-top: 2px;
+  }
+
+  /* LOKASI DAN JAM OPERASIONAL */
+  .site-footer__col--line {
+    width: 100%;
+    max-width: 310px;
+    margin: 0;
+    padding: 0;
+    border-left: none;
+    gap: 15px;
+  }
+
+  /* SOSIAL MEDIA DAN TOMBOL */
+  .site-footer__right {
+    display: flex;
+    align-items: center;
+    flex: initial;
+    width: 100%;
+    margin: 0;
+    gap: 17px;
+  }
+
+  .site-footer__social {
+    justify-content: center;
+    gap: 19px;
+  }
+
+  .site-footer__social a {
+    width: 29px;
+    height: 29px;
+  }
+
+  .site-footer__btn {
+    width: 160px;
+    height: 39px;
+    font-size: 12px;
+  }
+}
+
+
+/* ===== HP KECIL ===== */
+@media (max-width: 380px) {
+
+  .site-footer__inner {
+    width: 90%;
+    gap: 24px;
+  }
+
+  .site-footer__brand img {
+    width: 125px;
+  }
+
+  .site-footer__col,
+  .site-footer__col--line {
+    max-width: 285px;
+  }
+
+  .site-footer__item {
+    font-size: 11px;
+  }
+
+  .site-footer__social {
+    gap: 16px;
+  }
+}
+
+
+/* ===== FOOTER MOBILE: SEMUA CENTER ===== */
+@media (max-width: 600px) {
+
+  .site-footer__inner {
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Logo dan Login Admin */
+  .site-footer__brand {
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Bagian kontak */
+  .site-footer__col,
+  .site-footer__col--line {
+    align-items: center;
+    text-align: center;
+  }
+
+  .site-footer__item {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .site-footer__item svg {
+    flex-shrink: 0;
+    margin-top: 0;
+  }
+
+  /* Media sosial */
+  .site-footer__right {
+    align-items: center;
+    text-align: center;
+  }
+
+  .site-footer__social {
+    justify-content: center;
+  }
+
+  /* Tombol Contact Us */
+  .site-footer__btn {
+    margin: 0 auto;
+  }
+}
